@@ -1,17 +1,17 @@
 /*
  * input_reading.c
  *
- *  Created on: Dec 7, 2023
+ *  Created on: Dec 4, 2023
  *      Author: ASUS
  */
 
 #include "main.h"
-// we aim to work with 3 buttons
+
 #define N0_OF_BUTTONS 				       4
 
-// timer interrupt duration is 10ms, so to pass 1 second,
-// we need to jump to the interrupt service routine 100 time
-#define DURATION_FOR_AUTO_INCREASING	   100
+
+
+#define DURATION_FOR_AUTO_INCREASING	   100     // 1sec
 #define BUTTON_IS_PRESSED                  GPIO_PIN_RESET
 #define BUTTON_IS_RELEASED                 GPIO_PIN_SET
 #define BUTTON_1 GPIO
@@ -19,14 +19,14 @@
 // the buffer that the final result is stored after debouncing
 static GPIO_PinState buttonBuffer[N0_OF_BUTTONS];
 
-// we define two buffers for debouncing
+// two buffers for debouncing - store to compare
 static GPIO_PinState debounceButtonBuffer1[N0_OF_BUTTONS];
 static GPIO_PinState debounceButtonBuffer2[N0_OF_BUTTONS];
 
-// we define a flag for a button pressed more than 1 second.
+// flag for a button pressed more than 1 second.
 static uint8_t flagForButtonPress1s[N0_OF_BUTTONS];
 
-// we define counter for automatically increasing the value
+// counter for automatically increasing the value
 // after the button is pressed more than 1 second.
 static uint16_t counterForButtonPress1s[N0_OF_BUTTONS];
 
