@@ -1,0 +1,4 @@
+uart.c:17:6:disp_t_red_uart	4	static
+uart.c:21:6:disp_t_amber_uart	4	static
+uart.c:25:6:disp_t_green_uart	4	static
+uart.c:29:6:disp_time_uart	16	static
